@@ -20,7 +20,7 @@ public class ProductoService {
         return productoRepository.findAll();
     }
 
-    public Optional<Producto> getOne(int id){
+    public Optional<Producto> getOne(long id){
         return productoRepository.findById(id);
     }
 
@@ -32,15 +32,16 @@ public class ProductoService {
         productoRepository.save(producto);
     }
 
-    public void delete(int id){
+    public void delete(long id){
         productoRepository.deleteById(id);
     }
 
-    public boolean existsById(int id){
+    public boolean existsById(long id){
         return productoRepository.existsById(id);
     }
 
     public boolean existsByNombre(String nombre){
         return productoRepository.existsByNombre(nombre);
     }
+
 }

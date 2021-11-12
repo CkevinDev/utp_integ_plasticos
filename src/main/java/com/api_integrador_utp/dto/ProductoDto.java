@@ -1,57 +1,26 @@
 package com.api_integrador_utp.dto;
 
+import com.api_integrador_utp.security.entity.Usuario;
+import lombok.Getter;
+import lombok.Setter;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 
+@Setter
+@Getter
 public class ProductoDto {
 
     @NotBlank
     private String nombre;
-    @NotBlank
-    @Min(0)
-    private int precio;
     private String descripcion;
     private String imagenUrl;
+    private String imagenId;
+    private String material;
+    @NotBlank
+    @Min(0)
+    private  double precio;
+    private int cantidad;
+    private Usuario usuario;
 
-    public ProductoDto() {
-    }
 
-    public ProductoDto(@NotBlank String nombre,@NotBlank int precio, String descripcion, String imagenUrl) {
-        this.nombre = nombre;
-        this.precio = precio;
-        this.descripcion = descripcion;
-        this.imagenUrl = imagenUrl;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public int getPrecio() {
-        return precio;
-    }
-
-    public void setPrecio(int precio) {
-        this.precio = precio;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    public String getImagenUrl() {
-        return imagenUrl;
-    }
-
-    public void setImagenUrl(String imagenUrl) {
-        this.imagenUrl = imagenUrl;
-    }
 }

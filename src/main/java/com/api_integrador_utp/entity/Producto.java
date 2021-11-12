@@ -1,67 +1,46 @@
 package com.api_integrador_utp.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.api_integrador_utp.security.entity.Usuario;
+import lombok.*;
+
+import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Setter
+@Getter
 public class Producto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
+    @NotBlank
     private String nombre;
-    private int precio;
+    @NotBlank
     private String descripcion;
+    @NotBlank
     private String imagenUrl;
+    @NotBlank
+    private  String imagenId;
+    @NotBlank
+    private String material;
+    @Min(value = 0)
+    private double precio;
+    @Min(value = 0)
+    private int cantidad;
+    @ManyToOne
+    private Usuario usuario;
 
-    public Producto() {
-    }
-
-    public Producto(String nombre, int precio, String descripcion, String imagenUrl) {
+    public Producto(String nombre, String descripcion, String imagenUrl,String imagenId, String material, double precio, int cantidad, Usuario usuario) {
         this.nombre = nombre;
-        this.precio = precio;
         this.descripcion = descripcion;
         this.imagenUrl = imagenUrl;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public int getPrecio() {
-        return precio;
-    }
-
-    public void setPrecio(int precio) {
+        this.imagenId=imagenId;
+        this.material = material;
         this.precio = precio;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    public String getImagenUrl() {
-        return imagenUrl;
-    }
-
-    public void setImagenUrl(String imagenUrl) {
-        this.imagenUrl = imagenUrl;
+        this.cantidad = cantidad;
+        this.usuario = usuario;
     }
 }
